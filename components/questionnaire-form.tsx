@@ -87,26 +87,26 @@ export function QuestionnaireForm({ onComplete }: { onComplete: (answers: UserAn
           <div className="space-y-6">
             <div className="text-center mb-8">
               <User className="w-16 h-16 mx-auto text-emerald-600 mb-4" />
-              <h2 className="text-2xl font-bold text-gray-900">Let's get to know you</h2>
-              <p className="text-gray-600 mt-2">We'll create a personalized supplement plan just for you</p>
+              <h2 className="text-2xl font-bold text-gray-900">Да се запознаеме</h2>
+              <p className="text-gray-600 mt-2">Ќе создадеме персонализиран план за суплементи само за вас</p>
             </div>
             <div className="space-y-4">
               <div>
-                <Label htmlFor="name">What's your name?</Label>
+                <Label htmlFor="name">Како се викате?</Label>
                 <Input
                   id="name"
-                  placeholder="Enter your first name"
+                  placeholder="Внесете го вашето име"
                   value={answers.name || ""}
                   onChange={(e) => updateAnswer("name", e.target.value)}
                   className="mt-1"
                 />
               </div>
               <div>
-                <Label htmlFor="email">Email address</Label>
+                <Label htmlFor="email">Е-пошта</Label>
                 <Input
                   id="email"
                   type="email"
-                  placeholder="your@email.com"
+                  placeholder="vasa@eposta.com"
                   value={answers.email || ""}
                   onChange={(e) => updateAnswer("email", e.target.value)}
                   className="mt-1"
@@ -121,11 +121,11 @@ export function QuestionnaireForm({ onComplete }: { onComplete: (answers: UserAn
           <div className="space-y-6">
             <div className="text-center mb-8">
               <User className="w-16 h-16 mx-auto text-emerald-600 mb-4" />
-              <h2 className="text-2xl font-bold text-gray-900">Tell us about yourself</h2>
+              <h2 className="text-2xl font-bold text-gray-900">Кажете ни за себе</h2>
             </div>
             <div className="space-y-6">
               <div>
-                <Label>What's your age?</Label>
+                <Label>Колку години имате?</Label>
                 <RadioGroup value={answers.age} onValueChange={(value) => updateAnswer("age", value)} className="mt-2">
                   {["18-25", "26-35", "36-45", "46-55", "56-65", "65+"].map((age) => (
                     <div key={age} className="flex items-center space-x-2">
@@ -136,13 +136,13 @@ export function QuestionnaireForm({ onComplete }: { onComplete: (answers: UserAn
                 </RadioGroup>
               </div>
               <div>
-                <Label>Gender</Label>
+                <Label>Пол</Label>
                 <RadioGroup
                   value={answers.gender}
                   onValueChange={(value) => updateAnswer("gender", value)}
                   className="mt-2"
                 >
-                  {["Male", "Female", "Non-binary", "Prefer not to say"].map((gender) => (
+                  {["Машки", "Женски", "Небинерен", "Претпочитам да не кажам"].map((gender) => (
                     <div key={gender} className="flex items-center space-x-2">
                       <RadioGroupItem value={gender} id={gender} />
                       <Label htmlFor={gender}>{gender}</Label>
@@ -159,8 +159,8 @@ export function QuestionnaireForm({ onComplete }: { onComplete: (answers: UserAn
           <div className="space-y-6">
             <div className="text-center mb-8">
               <Heart className="w-16 h-16 mx-auto text-emerald-600 mb-4" />
-              <h2 className="text-2xl font-bold text-gray-900">How are you feeling lately?</h2>
-              <p className="text-gray-600 mt-2">Be honest - this helps us understand your current state</p>
+              <h2 className="text-2xl font-bold text-gray-900">Како се чувствувате во последно време?</h2>
+              <p className="text-gray-600 mt-2">Бидете искрени - ова ни помага да ја разбереме вашата моментална состојба</p>
             </div>
             <RadioGroup
               value={answers.currentFeeling}
@@ -168,11 +168,11 @@ export function QuestionnaireForm({ onComplete }: { onComplete: (answers: UserAn
               className="space-y-3"
             >
               {[
-                "Amazing - I feel great!",
-                "Pretty good - just want to optimize",
-                "Okay - could be better",
-                "Not great - struggling with energy/mood",
-                "Terrible - need serious help",
+                "Одлично - се чувствувам одлично!",
+                "Прилично добро - сакам само да оптимизирам",
+                "Добро - може да биде подобро",
+                "Не толку добро - имам проблеми со енергија/расположение",
+                "Лошо - ми треба сериозна помош",
               ].map((feeling) => (
                 <div key={feeling} className="flex items-center space-x-2 p-3 border rounded-lg hover:bg-gray-50">
                   <RadioGroupItem value={feeling} id={feeling} />
@@ -190,7 +190,7 @@ export function QuestionnaireForm({ onComplete }: { onComplete: (answers: UserAn
           <div className="space-y-6">
             <div className="text-center mb-8">
               <Heart className="w-16 h-16 mx-auto text-emerald-600 mb-4" />
-              <h2 className="text-2xl font-bold text-gray-900">What's your energy level like?</h2>
+              <h2 className="text-2xl font-bold text-gray-900">Какво е вашето ниво на енергија?</h2>
             </div>
             <RadioGroup
               value={answers.energyLevel}
@@ -198,11 +198,11 @@ export function QuestionnaireForm({ onComplete }: { onComplete: (answers: UserAn
               className="space-y-3"
             >
               {[
-                "High energy all day",
-                "Good energy most of the time",
-                "Energy crashes in afternoon",
-                "Low energy throughout the day",
-                "Constantly exhausted",
+                "Висока енергија цел ден",
+                "Добра енергија поголемиот дел од времето",
+                "Пад на енергија попладне",
+                "Ниска енергија во текот на денот",
+                "Постојано исцрпен",
               ].map((level) => (
                 <div key={level} className="flex items-center space-x-2 p-3 border rounded-lg hover:bg-gray-50">
                   <RadioGroupItem value={level} id={level} />
@@ -220,7 +220,7 @@ export function QuestionnaireForm({ onComplete }: { onComplete: (answers: UserAn
           <div className="space-y-6">
             <div className="text-center mb-8">
               <Dumbbell className="w-16 h-16 mx-auto text-emerald-600 mb-4" />
-              <h2 className="text-2xl font-bold text-gray-900">How often do you work out?</h2>
+              <h2 className="text-2xl font-bold text-gray-900">Колку често вежбате?</h2>
             </div>
             <RadioGroup
               value={answers.workoutFrequency}
@@ -228,11 +228,11 @@ export function QuestionnaireForm({ onComplete }: { onComplete: (answers: UserAn
               className="space-y-3"
             >
               {[
-                "Daily (6-7 times per week)",
-                "Very active (4-5 times per week)",
-                "Moderately active (2-3 times per week)",
-                "Occasionally (1 time per week)",
-                "Rarely or never",
+                "Дневно (6-7 пати неделно)",
+                "Многу активно (4-5 пати неделно)",
+                "Умерено активно (2-3 пати неделно)",
+                "Повремено (1 пат неделно)",
+                "Ретко или никогаш",
               ].map((frequency) => (
                 <div key={frequency} className="flex items-center space-x-2 p-3 border rounded-lg hover:bg-gray-50">
                   <RadioGroupItem value={frequency} id={frequency} />
@@ -250,21 +250,21 @@ export function QuestionnaireForm({ onComplete }: { onComplete: (answers: UserAn
           <div className="space-y-6">
             <div className="text-center mb-8">
               <Dumbbell className="w-16 h-16 mx-auto text-emerald-600 mb-4" />
-              <h2 className="text-2xl font-bold text-gray-900">What type of exercise do you do?</h2>
-              <p className="text-gray-600 mt-2">Select all that apply</p>
+              <h2 className="text-2xl font-bold text-gray-900">Каков тип на вежбање правите?</h2>
+              <p className="text-gray-600 mt-2">Изберете ги сите што се применливи</p>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
               {[
-                "Weight lifting/Strength training",
-                "Cardio (running, cycling, etc.)",
-                "Yoga/Pilates",
-                "Sports (basketball, tennis, etc.)",
-                "Swimming",
-                "Walking/Hiking",
-                "CrossFit/HIIT",
-                "Dance/Aerobics",
-                "Martial arts",
-                "Other",
+                "Кревање тежини/Тренинг за сила",
+                "Кардио (трчање, возење велосипед итн.)",
+                "Јога/Пилатес",
+                "Спортови (кошарка, тенис итн.)",
+                "Пливање",
+                "Одење/Пешачење",
+                "Кросфит/ХИИТ",
+                "Танц/Аеробик",
+                "Боречки вештини",
+                "Друго",
               ].map((type) => (
                 <div key={type} className="flex items-center space-x-2 p-3 border rounded-lg hover:bg-gray-50">
                   <Checkbox
@@ -286,23 +286,23 @@ export function QuestionnaireForm({ onComplete }: { onComplete: (answers: UserAn
           <div className="space-y-6">
             <div className="text-center mb-8">
               <Target className="w-16 h-16 mx-auto text-emerald-600 mb-4" />
-              <h2 className="text-2xl font-bold text-gray-900">What are your health goals?</h2>
-              <p className="text-gray-600 mt-2">Select all that apply</p>
+              <h2 className="text-2xl font-bold text-gray-900">Кои се вашите здравствени цели?</h2>
+              <p className="text-gray-600 mt-2">Изберете ги сите што се применливи</p>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
               {[
-                "Lose weight",
-                "Gain muscle mass",
-                "Increase energy",
-                "Improve sleep quality",
-                "Reduce stress/anxiety",
-                "Better digestion",
-                "Stronger immune system",
-                "Improve mental clarity/focus",
-                "Better skin/hair/nails",
-                "Heart health",
-                "Joint health",
-                "Anti-aging",
+                "Намалување на телесната тежина",
+                "Зголемување на мускулната маса",
+                "Зголемување oni енергија",
+                "Подобрување на квалитетот на спиењето",
+                "Намалување на стресот/анксиозноста",
+                "Подобро варење",
+                "Зајакнување на имунитетот",
+                "Подобрување на менталната јасност/фокус",
+                "Подобрување на кожата/косата/ноктите",
+                "Здравје на срцето",
+                "Здравје на зглобовите",
+                "Анти-стареење",
               ].map((goal) => (
                 <div key={goal} className="flex items-center space-x-2 p-3 border rounded-lg hover:bg-gray-50">
                   <Checkbox
@@ -324,25 +324,25 @@ export function QuestionnaireForm({ onComplete }: { onComplete: (answers: UserAn
           <div className="space-y-6">
             <div className="text-center mb-8">
               <Utensils className="w-16 h-16 mx-auto text-emerald-600 mb-4" />
-              <h2 className="text-2xl font-bold text-gray-900">Lifestyle questions</h2>
+              <h2 className="text-2xl font-bold text-gray-900">Прашања за животниот стил</h2>
             </div>
             <div className="space-y-6">
               <div>
-                <Label>What's your diet like?</Label>
+                <Label>Каква е вашата исхрана?</Label>
                 <RadioGroup
                   value={answers.dietType}
                   onValueChange={(value) => updateAnswer("dietType", value)}
                   className="mt-2 space-y-2"
                 >
                   {[
-                    "Standard/Omnivore",
-                    "Vegetarian",
-                    "Vegan",
-                    "Keto/Low-carb",
-                    "Paleo",
-                    "Mediterranean",
-                    "Intermittent fasting",
-                    "Other/Flexible",
+                    "Стандардна/Сèјадна",
+                    "Вегетаријанска",
+                    "Веганска",
+                    "Кето/Ниско јаглехидратна",
+                    "Палео",
+                    "Медитеранска",
+                    "Периодичен пост",
+                    "Друго/Флексибилно",
                   ].map((diet) => (
                     <div key={diet} className="flex items-center space-x-2">
                       <RadioGroupItem value={diet} id={diet} />
@@ -352,18 +352,18 @@ export function QuestionnaireForm({ onComplete }: { onComplete: (answers: UserAn
                 </RadioGroup>
               </div>
               <div>
-                <Label>How's your sleep quality?</Label>
+                <Label>Каков е квалитетот на вашиот сон?</Label>
                 <RadioGroup
                   value={answers.sleepQuality}
                   onValueChange={(value) => updateAnswer("sleepQuality", value)}
                   className="mt-2 space-y-2"
                 >
                   {[
-                    "Excellent (7-9 hours, wake up refreshed)",
-                    "Good (mostly restful sleep)",
-                    "Fair (some nights good, some bad)",
-                    "Poor (trouble falling/staying asleep)",
-                    "Terrible (chronic insomnia)",
+                    "Одличен (7-9 часа, се будам освежен)",
+                    "Добар (најчесто мирен сон)",
+                    "Среден (некои ноќи добри, некои лоши)",
+                    "Лош (проблеми со заспивање/останување заспан)",
+                    "Многу лош (хронична несоница)",
                   ].map((quality) => (
                     <div key={quality} className="flex items-center space-x-2">
                       <RadioGroupItem value={quality} id={quality} />
@@ -381,22 +381,22 @@ export function QuestionnaireForm({ onComplete }: { onComplete: (answers: UserAn
           <div className="space-y-6">
             <div className="text-center mb-8">
               <Brain className="w-16 h-16 mx-auto text-emerald-600 mb-4" />
-              <h2 className="text-2xl font-bold text-gray-900">Final health questions</h2>
+              <h2 className="text-2xl font-bold text-gray-900">Последни здравствени прашања</h2>
             </div>
             <div className="space-y-6">
               <div>
-                <Label>What's your stress level?</Label>
+                <Label>Кое е вашето ниво на стрес?</Label>
                 <RadioGroup
                   value={answers.stressLevel}
                   onValueChange={(value) => updateAnswer("stressLevel", value)}
                   className="mt-2 space-y-2"
                 >
                   {[
-                    "Very low - I feel calm and relaxed",
-                    "Low - manageable stress",
-                    "Moderate - some stressful periods",
-                    "High - frequently stressed",
-                    "Very high - constantly overwhelmed",
+                    "Многу ниско - се чувствувам смирено и опуштено",
+                    "Ниско - управлив стрес",
+                    "Умерено - повремени стресни периоди",
+                    "Високо - често сум под стрес",
+                    "Многу високо - постојано преоптоварен",
                   ].map((level) => (
                     <div key={level} className="flex items-center space-x-2">
                       <RadioGroupItem value={level} id={level} />
@@ -406,17 +406,17 @@ export function QuestionnaireForm({ onComplete }: { onComplete: (answers: UserAn
                 </RadioGroup>
               </div>
               <div>
-                <Label>Any specific health concerns? (Optional)</Label>
+                <Label>Имате ли специфични здравствени проблеми? (Изборно)</Label>
                 <div className="mt-2 space-y-2">
                   {[
-                    "Digestive issues",
-                    "Joint pain/inflammation",
-                    "Hormonal imbalances",
-                    "Anxiety/Depression",
-                    "High blood pressure",
-                    "High cholesterol",
-                    "Blood sugar issues",
-                    "Autoimmune conditions",
+                    "Проблеми со варењето",
+                    "Болки во зглобовите/воспаление",
+                    "Хормонални нарушувања",
+                    "Анксиозност/Депресија",
+                    "Висок крвен притисок",
+                    "Висок холестерол",
+                    "Проблеми со шеќерот во крвта",
+                    "Автоимуни состојби",
                   ].map((concern) => (
                     <div key={concern} className="flex items-center space-x-2">
                       <Checkbox
@@ -430,9 +430,9 @@ export function QuestionnaireForm({ onComplete }: { onComplete: (answers: UserAn
                 </div>
               </div>
               <div>
-                <Label>Current supplements (if any)</Label>
+                <Label>Моментални суплементи (доколку има)</Label>
                 <Textarea
-                  placeholder="List any supplements you're currently taking..."
+                  placeholder="Наведете ги суплементите што моментално ги земате..."
                   value={answers.currentSupplements || ""}
                   onChange={(e) => updateAnswer("currentSupplements", e.target.value)}
                   className="mt-1"
@@ -447,15 +447,15 @@ export function QuestionnaireForm({ onComplete }: { onComplete: (answers: UserAn
           <div className="space-y-6">
             <div className="text-center mb-8">
               <DollarSign className="w-16 h-16 mx-auto text-emerald-600 mb-4" />
-              <h2 className="text-2xl font-bold text-gray-900">What's your monthly supplement budget?</h2>
-              <p className="text-gray-600 mt-2">This helps us recommend the most cost-effective options</p>
+              <h2 className="text-2xl font-bold text-gray-900">Колкав е вашиот месечен буџет за суплементи?</h2>
+              <p className="text-gray-600 mt-2">Ова ни помага да препорачаме најисплатливи опции</p>
             </div>
             <RadioGroup
               value={answers.budget}
               onValueChange={(value) => updateAnswer("budget", value)}
               className="space-y-3"
             >
-              {["Under $50", "$50 - $100", "$100 - $200", "$200 - $300", "Over $300"].map((budget) => (
+              {["Под 25€", "25€ - 50€", "50€ - 100€", "100€ - 300€", "Над 300€"].map((budget) => (
                 <div key={budget} className="flex items-center space-x-2 p-3 border rounded-lg hover:bg-gray-50">
                   <RadioGroupItem value={budget} id={budget} />
                   <Label htmlFor={budget} className="flex-1 cursor-pointer">
@@ -476,9 +476,9 @@ export function QuestionnaireForm({ onComplete }: { onComplete: (answers: UserAn
     <div className="max-w-2xl mx-auto">
       <div className="mb-8">
         <div className="flex items-center justify-between mb-4">
-          <h1 className="text-3xl font-bold text-gray-900">Personalized Supplement Assessment</h1>
+          <h1 className="text-3xl font-bold text-gray-900">Персонализирана проценка за суплементи</h1>
           <span className="text-sm text-gray-500">
-            {currentStep} of {TOTAL_STEPS}
+            {currentStep} од {TOTAL_STEPS}
           </span>
         </div>
         <Progress value={progress} className="h-2" />
@@ -496,7 +496,7 @@ export function QuestionnaireForm({ onComplete }: { onComplete: (answers: UserAn
               className="flex items-center gap-2"
             >
               <ChevronLeft className="w-4 h-4" />
-              Previous
+              Претходно
             </Button>
 
             <Button
@@ -504,7 +504,7 @@ export function QuestionnaireForm({ onComplete }: { onComplete: (answers: UserAn
               disabled={!isStepValid()}
               className="flex items-center gap-2 bg-emerald-600 hover:bg-emerald-700"
             >
-              {currentStep === TOTAL_STEPS ? "Get My Plan" : "Next"}
+              {currentStep === TOTAL_STEPS ? "Добиј го мојот план" : "Следно"}
               <ChevronRight className="w-4 h-4" />
             </Button>
           </div>
