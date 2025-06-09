@@ -52,9 +52,9 @@ export function RecommendationResults({
           <div className="w-20 h-20 mx-auto bg-emerald-100 rounded-full flex items-center justify-center mb-4">
             <Target className="w-10 h-10 text-emerald-600" />
           </div>
-          <h1 className="text-3xl font-bold text-gray-900 mb-2">Your Personalized Supplement Plan</h1>
+          <h1 className="text-3xl font-bold text-gray-900 mb-2">Вашиот персонализиран план за суплементи</h1>
           <p className="text-lg text-gray-600">
-            Hi {userAnswers.name}! Based on your responses, here's your custom health optimization plan.
+            Здраво {userAnswers.name}! Врз основа на вашите одговори, еве го вашиот приспособен план за здравствена оптимизација.
           </p>
         </div>
       </div>
@@ -64,7 +64,7 @@ export function RecommendationResults({
         <CardHeader className="bg-emerald-50">
           <CardTitle className="flex items-center gap-2 text-emerald-800">
             <TrendingUp className="w-5 h-5" />
-            Your Health Summary & Goals
+            Резиме на вашето здравје и цели
           </CardTitle>
         </CardHeader>
         <CardContent className="p-6">
@@ -84,7 +84,7 @@ export function RecommendationResults({
         <div>
           <div className="flex items-center gap-2 mb-4">
             <AlertCircle className="w-6 h-6 text-red-600" />
-            <h2 className="text-2xl font-bold text-gray-900">Essential Supplements (Start Here)</h2>
+            <h2 className="text-2xl font-bold text-gray-900">Есенцијални суплементи (Започнете овде)</h2>
           </div>
           <div className="grid gap-4">
             {highPrioritySupplements.map((supplement, index) => (
@@ -99,7 +99,7 @@ export function RecommendationResults({
         <div>
           <div className="flex items-center gap-2 mb-4">
             <Clock className="w-6 h-6 text-yellow-600" />
-            <h2 className="text-2xl font-bold text-gray-900">Recommended Additions</h2>
+            <h2 className="text-2xl font-bold text-gray-900">Препорачани додатоци</h2>
           </div>
           <div className="grid gap-4">
             {mediumPrioritySupplements.map((supplement, index) => (
@@ -114,7 +114,7 @@ export function RecommendationResults({
         <div>
           <div className="flex items-center gap-2 mb-4">
             <CheckCircle className="w-6 h-6 text-green-600" />
-            <h2 className="text-2xl font-bold text-gray-900">Optional Enhancements</h2>
+            <h2 className="text-2xl font-bold text-gray-900">Изборни подобрувања</h2>
           </div>
           <div className="grid gap-4">
             {lowPrioritySupplements.map((supplement, index) => (
@@ -129,7 +129,7 @@ export function RecommendationResults({
         <CardHeader className="bg-blue-50">
           <CardTitle className="flex items-center gap-2 text-blue-800">
             <Heart className="w-5 h-5" />
-            Lifestyle Recommendations
+            Препораки за животен стил
           </CardTitle>
         </CardHeader>
         <CardContent className="p-6">
@@ -149,7 +149,7 @@ export function RecommendationResults({
         <CardHeader className="bg-purple-50">
           <CardTitle className="flex items-center gap-2 text-purple-800">
             <Clock className="w-5 h-5" />
-            Implementation Timeline
+            Временска рамка за имплементација
           </CardTitle>
         </CardHeader>
         <CardContent className="p-6">
@@ -161,21 +161,21 @@ export function RecommendationResults({
       <Card className="shadow-lg border-emerald-200 bg-gradient-to-r from-emerald-50 to-blue-50">
         <CardContent className="p-8 text-center">
           <Zap className="w-12 h-12 mx-auto text-emerald-600 mb-4" />
-          <h3 className="text-2xl font-bold text-gray-900 mb-4">Ready to Transform Your Health?</h3>
+          <h3 className="text-2xl font-bold text-gray-900 mb-4">Подготвени да го трансформирате вашето здравје?</h3>
           <p className="text-gray-600 mb-6 max-w-2xl mx-auto">
-            This personalized plan is designed specifically for your goals and lifestyle. Start with the essential
-            supplements and gradually add others as your body adapts.
+            Овој персонализиран план е дизајниран специјално за вашите цели и животен стил. Започнете со есенцијалните
+            суплементи и постепено додавајте други додека вашето тело се приспособува.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button
               size="lg"
               className="bg-emerald-600 hover:bg-emerald-700"
               onClick={() =>
-                window.open("mailto:support@yoursupplementstore.com?subject=My Personalized Plan", "_blank")
+                window.open("mailto:poddrska@vashsuplementprodavnica.com?subject=Мојот персонализиран план", "_blank")
               }
             >
               <Heart className="w-5 h-5 mr-2" />
-              Get Personal Consultation
+              Добијте лична консултација
             </Button>
             <Button
               variant="outline"
@@ -184,7 +184,7 @@ export function RecommendationResults({
               className="border-emerald-600 text-emerald-600 hover:bg-emerald-50"
             >
               <RefreshCw className="w-5 h-5 mr-2" />
-              Take Assessment Again
+              Повторете ја проценката
             </Button>
           </div>
         </CardContent>
@@ -205,7 +205,7 @@ function SupplementCard({ supplement }: { supplement: any }) {
               <h3 className="text-xl font-bold text-gray-900">{supplement.name}</h3>
               <Badge className={priorityColors[supplement.priority as keyof typeof priorityColors]}>
                 <PriorityIcon className="w-3 h-3 mr-1" />
-                {supplement.priority} priority
+                {supplement.priority === "high" ? "Висок приоритет" : supplement.priority === "medium" ? "Среден приоритет" : "Низок приоритет"}
               </Badge>
             </div>
             <p className="text-gray-600 mb-4">{supplement.description}</p>
@@ -216,7 +216,7 @@ function SupplementCard({ supplement }: { supplement: any }) {
           <div>
             <h4 className="font-semibold text-gray-900 mb-2 flex items-center gap-2">
               <Star className="w-4 h-4 text-yellow-500" />
-              Key Benefits
+              Клучни придобивки
             </h4>
             <ul className="space-y-1">
               {supplement.benefits.map((benefit: string, index: number) => (
@@ -234,14 +234,14 @@ function SupplementCard({ supplement }: { supplement: any }) {
             <div>
               <h4 className="font-semibold text-gray-900 mb-1 flex items-center gap-2">
                 <Pill className="w-4 h-4 text-blue-500" />
-                Dosage
+                Дозирање
               </h4>
               <p className="text-sm text-gray-600">{supplement.dosage}</p>
             </div>
             <div>
               <h4 className="font-semibold text-gray-900 mb-1 flex items-center gap-2">
                 <Clock className="w-4 h-4 text-purple-500" />
-                Best Time
+                Најдобро време
               </h4>
               <p className="text-sm text-gray-600">{supplement.timing}</p>
             </div>
@@ -252,7 +252,7 @@ function SupplementCard({ supplement }: { supplement: any }) {
             onClick={() => window.open(supplement.link, "_blank")}
           >
             <ExternalLink className="w-4 h-4 mr-2" />
-            Shop {supplement.name}
+            Купи {supplement.name}
           </Button>
         </div>
       </CardContent>
