@@ -7,10 +7,10 @@ import { generatePersonalizedPlan } from "@/lib/actions"
 import type { UserAnswers, PersonalizedPlan } from "./supplement-lead-magnet"
 
 const loadingMessages = [
-  "Analyzing your health profile...",
-  "Researching optimal supplements for your goals...",
-  "Creating your personalized plan...",
-  "Finalizing recommendations...",
+  "Анализираме го твојот здравствен профил...",
+  "Истражуваме оптимални суплементи за твоите цели...",
+  "Креираме персонализиран план...",
+  "Ги финализираме препораките...",
 ]
 
 export function LoadingScreen({
@@ -34,7 +34,7 @@ export function LoadingScreen({
         onPlanGenerated(plan)
       } catch (err) {
         console.error("Error generating plan:", err)
-        setError("Failed to generate your plan. Please try again.")
+        setError("Не успеавме да го креираме твојот план. Те молиме обиди се повторно.")
       }
     }
 
@@ -50,7 +50,7 @@ export function LoadingScreen({
           <CardContent className="p-8 text-center">
             <div className="text-red-600 mb-4">
               <Target className="w-16 h-16 mx-auto mb-4" />
-              <h2 className="text-2xl font-bold">Oops! Something went wrong</h2>
+              <h2 className="text-2xl font-bold">Упс! Нешто тргна наопаку</h2>
               <p className="mt-2">{error}</p>
             </div>
           </CardContent>
@@ -73,26 +73,26 @@ export function LoadingScreen({
               </div>
             </div>
 
-            <h2 className="text-2xl font-bold text-gray-900 mb-4">Creating Your Personalized Plan</h2>
+            <h2 className="text-2xl font-bold text-gray-900 mb-4">Креираме персонализиран план</h2>
 
             <p className="text-lg text-gray-600 mb-8">{loadingMessages[currentMessage]}</p>
 
             <div className="grid grid-cols-3 gap-4 max-w-md mx-auto">
               <div className="text-center p-4 bg-emerald-50 rounded-lg">
                 <Brain className="w-8 h-8 mx-auto text-emerald-600 mb-2" />
-                <p className="text-sm text-gray-600">AI Analysis</p>
+                <p className="text-sm text-gray-600">АИ анализа</p>
               </div>
               <div className="text-center p-4 bg-blue-50 rounded-lg">
                 <Pill className="w-8 h-8 mx-auto text-blue-600 mb-2" />
-                <p className="text-sm text-gray-600">Supplement Research</p>
+                <p className="text-sm text-gray-600">Истражување суплементи</p>
               </div>
               <div className="text-center p-4 bg-purple-50 rounded-lg">
                 <Target className="w-8 h-8 mx-auto text-purple-600 mb-2" />
-                <p className="text-sm text-gray-600">Goal Optimization</p>
+                <p className="text-sm text-gray-600">Оптимизација на цели</p>
               </div>
             </div>
 
-            <div className="mt-8 text-sm text-gray-500">This usually takes 30-60 seconds...</div>
+            <div className="mt-8 text-sm text-gray-500">Ова обично трае 30-60 секунди...</div>
           </div>
         </CardContent>
       </Card>
