@@ -25,24 +25,24 @@ User Profile:
 Please provide a comprehensive response in the following JSON format:
 
 {
-  "summary": "Персонализиран резиме од 2-3 реченици за нивниот здравствен профил и главни области на фокус",
+  "summary": "A personalized 2-3 sentence summary of their health profile and main focus areas",
   "recommendations": [
     {
-      "name": "Име на суплемент",
-      "description": "Краток опис на дејството на суплементот",
-      "benefits": ["Придобивка 1", "Придобивка 2", "Придобивка 3"],
-      "dosage": "Препорачана доза",
-      "timing": "Кога да се земе",
+      "name": "Supplement Name",
+      "description": "Brief description of what this supplement does",
+      "benefits": ["Benefit 1", "Benefit 2", "Benefit 3"],
+      "dosage": "Recommended dosage",
+      "timing": "When to take it",
       "link": "https://example-supplement-store.com/product-name",
-      "priority": "висок|среден|низок"
+      "priority": "high|medium|low"
     }
   ],
   "lifestyle_tips": [
-    "Совет за животен стил 1",
-    "Совет за животен стил 2",
-    "Совет за животен стил 3"
+    "Lifestyle tip 1",
+    "Lifestyle tip 2",
+    "Lifestyle tip 3"
   ],
-  "timeline": "Временска рамка за имплементација на овој план (на пример, започнете со суплементи со висок приоритет 2-4 недели, потоа додадете среден приоритет, итн.)"
+  "timeline": "A timeline for implementing this plan (e.g., start with high priority supplements for 2-4 weeks, then add medium priority, etc.)"
 }
 
 Guidelines:
@@ -113,53 +113,53 @@ Respond only with valid JSON.`
 
     // Fallback plan in case of API failure
     return {
-      summary: `Врз основа на вашиот профил, препорачуваме фокусирање на основни суплементи за поддршка на вашите цели за ${userAnswers.healthGoals?.[0]?.toLowerCase()} и подобрување на вашите нивоа на енергија.`,
+      summary: `Based on your profile, we recommend focusing on foundational supplements to support your ${userAnswers.healthGoals?.[0]?.toLowerCase()} goals and improve your overall energy levels.`,
       recommendations: [
         {
-          name: "Висококвалитетен мултивитамин",
-          description: "Сеопфатен мултивитамин за пополнување на нутритивните празнини во вашата исхрана",
-          benefits: ["Го поддржува целокупното здравје", "Пополнува нутритивни празнини", "Ги зголемува нивоата на енергија"],
-          dosage: "1 капсула дневно",
-          timing: "Со појадок",
-          link: "https://prodavnica-za-suplementi.com/multivitamin",
-          priority: "висок",
+          name: "High-Quality Multivitamin",
+          description: "A comprehensive multivitamin to fill nutritional gaps in your diet",
+          benefits: ["Supports overall health", "Fills nutritional gaps", "Boosts energy levels"],
+          dosage: "1 capsule daily",
+          timing: "With breakfast",
+          link: "https://supplement-store.com/multivitamin",
+          priority: "high",
         },
         {
-          name: "Омега-3 рибино масло",
-          description: "Есенцијални масни киселини за здравје на срцето, мозокот и зглобовите",
-          benefits: ["Го поддржува здравјето на срцето", "Го подобрува функционирањето на мозокот", "Го намалува воспалението"],
-          dosage: "1000мг дневно",
-          timing: "Со оброци",
-          link: "https://prodavnica-za-suplementi.com/omega-3",
-          priority: "висок",
+          name: "Omega-3 Fish Oil",
+          description: "Essential fatty acids for heart, brain, and joint health",
+          benefits: ["Supports heart health", "Improves brain function", "Reduces inflammation"],
+          dosage: "1000mg daily",
+          timing: "With meals",
+          link: "https://supplement-store.com/omega-3",
+          priority: "high",
         },
         {
-          name: "Витамин Д3",
-          description: "Есенцијален за здравјето на коските, имунолошкиот систем и расположението",
-          benefits: ["Го поддржува здравјето на коските", "Го зајакнува имунолошкиот систем", "Го подобрува расположението"],
-          dosage: "2000 ИЕ дневно",
-          timing: "Со појадок",
-          link: "https://prodavnica-za-suplementi.com/vitamin-d3",
-          priority: "среден",
+          name: "Vitamin D3",
+          description: "Essential for bone health, immune function, and mood",
+          benefits: ["Supports bone health", "Boosts immune system", "Improves mood"],
+          dosage: "2000 IU daily",
+          timing: "With breakfast",
+          link: "https://supplement-store.com/vitamin-d3",
+          priority: "medium",
         },
         {
-          name: "Магнезиум",
-          description: "Важен минерал за мускулна функција, спиење и управување со стресот",
-          benefits: ["Го подобрува квалитетот на спиењето", "Го намалува стресот", "Го поддржува мускулното функционирање"],
-          dosage: "400мг дневно",
-          timing: "Пред спиење",
-          link: "https://prodavnica-za-suplementi.com/magnezijum",
-          priority: "среден",
+          name: "Magnesium",
+          description: "Important mineral for muscle function, sleep, and stress management",
+          benefits: ["Improves sleep quality", "Reduces stress", "Supports muscle function"],
+          dosage: "400mg daily",
+          timing: "Before bedtime",
+          link: "https://supplement-store.com/magnesium",
+          priority: "medium",
         },
       ],
       lifestyle_tips: [
-        "Одржувајте постојан распоред на спиење од 7-9 часа на ноќ",
-        "Останете хидрирани со пиење на најмалку 8 чаши вода дневно",
-        "Вклучете разновидни шарени овошја и зеленчуци во вашата исхрана",
-        "Практикувајте техники за управување со стресот, како медитација или длабоко дишење",
+        "Maintain a consistent sleep schedule of 7-9 hours per night",
+        "Stay hydrated by drinking at least 8 glasses of water daily",
+        "Include a variety of colorful fruits and vegetables in your diet",
+        "Practice stress management techniques like meditation or deep breathing",
       ],
       timeline:
-        "Започнете со суплементите со висок приоритет (мултивитамин и омега-3) во првите 2-3 недели. Откако вашето тело ќе се прилагоди, додадете ги суплементите со среден приоритет. Следете како се чувствувате и приспособете ги дозите по потреба.",
+        "Start with the high-priority supplements (multivitamin and omega-3) for the first 2-3 weeks. Once your body adjusts, add the medium-priority supplements. Monitor how you feel and adjust dosages as needed.",
     }
   }
 }
