@@ -1,6 +1,10 @@
+"use server"
+
+import type { UserAnswers, PersonalizedPlan } from "@/components/supplement-lead-magnet"
+
 export async function generatePersonalizedPlan(userAnswers: UserAnswers): Promise<PersonalizedPlan> {
   try {
-    const prompt = `You are a certified nutritionist and supplement expert with extensive experience in sports nutrition and programming. Create a personalized supplement plan for this person based on their health assessment.
+    const prompt = `You are a certified nutritionist and supplement expert. Create a personalized supplement plan for this person based on their health assessment.
 
 User Profile:
 - Name: ${userAnswers.name}
@@ -42,18 +46,17 @@ Please provide a comprehensive response in the following JSON format:
 }
 
 Guidelines:
-- Recommend 4-8 supplements total, including foundational options (e.g., Multivitamin, Omega-3, Vitamin D3, Magnesium) and performance-enhancing options (e.g., Creatine, BCAA, Glutamine).
-- Prioritize based on their specific goals (e.g., muscle gain, endurance, recovery) and current state (e.g., energy levels, stress, health concerns).
-- Consider their budget when making recommendations, suggesting cost-effective alternatives where applicable.
-- Include evidence-based supplements only, with a focus on sport performance and recovery (e.g., Creatine Monohydrate for strength, BCAA for muscle recovery, Glutamine for immune support).
-- Make links realistic (use placeholder supplement store URLs).
-- Provide practical, actionable advice, considering workout frequency and type.
-- Account for any health concerns or contraindications (e.g., avoid Creatine if kidney issues are present).
-- Make the plan progressive and sustainable, adjusting based on user feedback.
+- Recommend 4-8 supplements total
+- Prioritize based on their specific goals and current state
+- Consider their budget when making recommendations
+- Include evidence-based supplements only
+- Make links realistic (use placeholder supplement store URLs)
+- Provide practical, actionable advice
+- Consider any health concerns or contraindications
+- Make the plan progressive and sustainable
 
-Respond only with valid JSON.`;
+Respond only with valid JSON.`
 
-    // Останатиот код (fetch, обработка на одговор) останува ист
     const response = await fetch("https://api.openai.com/v1/chat/completions", {
       method: "POST",
       headers: {
@@ -75,35 +78,40 @@ Respond only with valid JSON.`;
         temperature: 0.7,
         max_tokens: 2000,
       }),
-    });
+    })
 
-    // Останатата логика за обработка на одговорот останува иста
     if (!response.ok) {
-      const errorData = await response.text();
-      console.error("OpenAI API Error:", response.status, errorData);
-      throw new Error(`OpenAI API request failed: ${response.status}`);
+      const errorData = await response.text()
+      console.error("OpenAI API Error:", response.status, errorData)
+      throw new Error(`OpenAI API request failed: ${response.status}`)
     }
 
-    const data = await response.json();
+    const data = await response.json()
+
     if (!data.choices || !data.choices[0] || !data.choices[0].message) {
-      console.error("Unexpected API response structure:", data);
-      throw new Error("Invalid response structure from OpenAI API");
+      console.error("Unexpected API response structure:", data)
+      throw new Error("Invalid response structure from OpenAI API")
     }
 
-    const content = data.choices[0].message.content.trim();
+    const content = data.choices[0].message.content.trim()
+
     try {
-      const plan = JSON.parse(content) as PersonalizedPlan;
+      const plan = JSON.parse(content) as PersonalizedPlan
+
+      // Validate the response structure
       if (!plan.summary || !plan.recommendations || !plan.lifestyle_tips || !plan.timeline) {
-        throw new Error("Invalid plan structure received from AI");
+        throw new Error("Invalid plan structure received from AI")
       }
-      return plan;
+
+      return plan
     } catch (parseError) {
-      console.error("Failed to parse AI response as JSON:", content);
-      throw new Error("Failed to parse AI response");
+      console.error("Failed to parse AI response as JSON:", content)
+      throw new Error("Failed to parse AI response")
     }
   } catch (error) {
-    console.error("Error generating personalized plan:", error);
-    // Фалов план останува ист, со додавање на Креатин, BCAA, Glutamine во опциите
+    console.error("Error generating personalized plan:", error)
+
+    // Fallback plan in case of API failure
     return {
       summary: `Based on your profile, we recommend focusing on foundational supplements to support your ${userAnswers.healthGoals?.[0]?.toLowerCase()} goals and improve your overall energy levels.`,
       recommendations: [
@@ -143,33 +151,6 @@ Respond only with valid JSON.`;
           link: "https://supplement-store.com/magnesium",
           priority: "medium",
         },
-        {
-          name: "Creatine Monohydrate",
-          description: "Supports strength and performance during high-intensity workouts",
-          benefits: ["Increases muscle power", "Enhances workout performance", "Aids muscle recovery"],
-          dosage: "5g daily",
-          timing: "Post-workout",
-          link: "https://supplement-store.com/creatine",
-          priority: "medium",
-        },
-        {
-          name: "BCAA",
-          description: "Essential amino acids for muscle recovery and reducing fatigue",
-          benefits: ["Promotes muscle recovery", "Reduces muscle breakdown", "Decreases exercise fatigue"],
-          dosage: "5-10g daily",
-          timing: "During or post-workout",
-          link: "https://supplement-store.com/bcaa",
-          priority: "low",
-        },
-        {
-          name: "Glutamine",
-          description: "Supports immune health and muscle recovery after intense exercise",
-          benefits: ["Boosts immune system", "Aids muscle repair", "Reduces soreness"],
-          dosage: "5g daily",
-          timing: "Post-workout",
-          link: "https://supplement-store.com/glutamine",
-          priority: "low",
-        },
       ],
       lifestyle_tips: [
         "Maintain a consistent sleep schedule of 7-9 hours per night",
@@ -178,7 +159,7 @@ Respond only with valid JSON.`;
         "Practice stress management techniques like meditation or deep breathing",
       ],
       timeline:
-        "Start with the high-priority supplements (multivitamin and omega-3) for the first 2-3 weeks. Once your body adjusts, add the medium-priority supplements like Vitamin D3 and Creatine. Monitor your progress and introduce BCAA or Glutamine as needed.",
-    };
+        "Start with the high-priority supplements (multivitamin and omega-3) for the first 2-3 weeks. Once your body adjusts, add the medium-priority supplements. Monitor how you feel and adjust dosages as needed.",
+    }
   }
 }
